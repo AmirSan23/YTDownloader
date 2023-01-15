@@ -1,3 +1,5 @@
+#Nothing important here, just a bit of tkinter crash course drafts 
+
 import tkinter as tk
 
 #interface for downloader to make software more user-friendly
