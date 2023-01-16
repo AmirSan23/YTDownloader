@@ -4,7 +4,8 @@ import os
 
 #TODO: 1. Let user choose a directory to which he wants to save a file. (Done)
 #      2. Add a dropdown to select a video quality.
-#      3. Redesign and colouring
+#      3. Adapt scripts for particular functions.
+#      4. Redesign and colouring.
 
 def get_playlist_video(link, file_path):
     p = Playlist(link)
