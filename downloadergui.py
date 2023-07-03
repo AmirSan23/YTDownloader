@@ -4,7 +4,6 @@ from tkinter import filedialog
 import main
 
 class DownloaderGUI:
-
     def __init__(self):
         #initial settings of an app window
         self.root = tk.Tk()
@@ -15,7 +14,7 @@ class DownloaderGUI:
         self.lable.pack(padx=10, pady=20)
 
         #text input
-        self.textbox = tk.Text(self.root, height=1, width=60, font=("Arial", 9))
+        self.textbox = tk.Text(self.root, height=1, width=60, font=("Arial", 10))
         self.textbox.pack(padx=30)
 
         #dropdown
@@ -40,14 +39,15 @@ class DownloaderGUI:
                           pady=5)
 
         #Get a playlist (Video format)
-        self.button2 = tk.Button(self.buttonframe, text="Get a playlist (Video format)", font=("Arial",10))
+        self.button2 = tk.Button(self.buttonframe, text="Get a playlist (Video format)", font=("Arial",10),
+                                 command=self.get_playlist_video)
         self.button2.grid(row=1, column=0,
                           sticky="news",
                           padx=5,
                           pady=5)
 
         #Download video button
-        self.button3 = tk.Button(self.buttonframe, text="Download video", font=("Arial",10))
+        self.button3 = tk.Button(self.buttonframe, text="Download video", font=("Arial",10), command=self.get_resolutions)
         self.button3.grid(row=0,
                           column=1,
                           sticky="news",
@@ -55,7 +55,8 @@ class DownloaderGUI:
                           pady=5)
 
         #Get Playlist(Audio button)
-        self.button4 = tk.Button(self.buttonframe, text="Get a playlist (Audio format)", font=("Arial",10))
+        self.button4 = tk.Button(self.buttonframe, text="Get a playlist (Audio format)", font=("Arial",10),
+                                 command=self.get_playlist_audio)
         self.button4.grid(row=1,
                           column=1,
                           sticky="news",
@@ -67,16 +68,22 @@ class DownloaderGUI:
 
     #function scripts
     def download_audio_only(self):
-        outputpath = filedialog.askdirectory() #ask user for path where they want their file to be stored
+        outputpath = filedialog.askdirectory() #ask user for path where they want to save their file
         main.get_audio_only(self.textbox.get('1.0', tk.END), outputpath)
 
     def get_playlist_video(self):
-        pass
+        outputpath = filedialog.askdirectory()
+        main.get_playlist_video(self.textbox.get('1.0', tk.END),outputpath)
 
     def get_playlist_audio(self):
-        pass
+        outputpath = filedialog.askdirectory()
+        main.get_playlist_audio(self.textbox.get('1.0', tk.END),outputpath)
 
     def get_video(self):
         pass
+
+    def get_resolutions(self):
+        outputpath = filedialog.askdirectory()
+        main.get_resolutions(self.textbox.get('1.0', tk.END))
 
 DownloaderGUI()
